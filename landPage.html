@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title></title>
+
+<link rel="stylesheet" type="text/css" href="css/landpage.css">
+
+</style>
+</head>
+
+<body>
+
+<ul>
+	<li><a href="landPage.html">BookHub</a></li>
+</ul>
+
+<div class="line"></div>
+
+<div class="row">
+
+  <div class="column left">
+    	<div class="welcomeMsg">
+  			<h3>Welcome to BookHub</h3>
+  			<div class = "description">
+  				<p>The Readers Heaven</p>
+  			</div>
+		</div>
+  </div>
+
+  <div class="column middle">
+  	<div class="signin">
+	    <form class="form" action = "login.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
+
+			<p class="containerText"> Existing Customer </p>
+			<input type = "text" name = "username" class = "box" placeholder="Username" required/>
+
+	        <input type = "password" name = "password" class = "box" placeholder="Password" required/>
+
+	        <input name ="btn-signin" type = "submit" value = " Sign In "/>
+	        <input name ="btn-forgotPass" type = "submit" value = " Forgot Password " style = "background-color: red;"/>
+	    </form>
+	</div>
+  </div>
+
+  <div class="column right">
+	<div class="signup">
+	    <form class="form" action = "insertdb.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
+
+			<p class="containerText"> New Customer </p>
+			<input type = "text" name = "username" class = "box" placeholder="Username" required/>
+
+	        <input type = "text" name = "firstname" class = "box" placeholder="First Name" required/>
+	        <input type = "text" name = "lastname" class = "box" placeholder="Last Name" required/>
+
+	        <input type = "text" name = "email" class = "box" placeholder="Email" required/>
+
+	        <input type = "password" name = "password" class = "box" placeholder="Password" required/>
+	        <input type = "password" name = "confirmpassword" class = "box" placeholder="Confirm Password" required />
+
+	        <input name ="btn-signup" type = "submit" value = " Sign Up "/>
+		</form>
+	</div>
+  </div>
+
+</div>
+
+<div class="skipMsg">
+	<a href="main.html">Skip Sign Up/ Sign In >></a>
+</div>
+
+
+<!-- <div class="row">
+  	<div class="column">
+  		<div class="welcomeMsg">
+  			<h3>Welcome to BookHub</h3>
+  			<p>The Readers Heaven</p>
+		</div>
+	</div>
+
+  	<div class="column">
+  	
+  		<div class="signup">
+	      	<form class="form" action = "insertdb.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
+
+				<p class="containerText"> Signup </p>
+				<input type = "text" name = "username" class = "box" placeholder="Username" required/>
+
+	            <input type = "text" name = "firstname" class = "box" placeholder="First Name" required/>
+	            <input type = "text" name = "lastname" class = "box" placeholder="Last Name" required/>
+
+	            <input type = "text" name = "email" class = "box" placeholder="Email" required/>
+
+	            <input type = "password" name = "password" class = "box" placeholder="Password" required/>
+	            <input type = "password" name = "confirmpassword" class = "box" placeholder="Confirm Password" required />
+
+	            <input name ="btn-signup" type = "submit" value = " Sign Up "/>
+
+		   	</form>
+	     </div>
+	</div>
+
+  	<div class="column">
+  		<p>Text</p>
+  	</div>
+</div> -->
+
+</body>
+</html>   
