@@ -1,6 +1,7 @@
 
 *{
   font-family: "Arial", Helvetica ,sans-serif;
+  box-sizing: border-box;
 }
 
 
@@ -36,35 +37,6 @@ border-bottom: 3px solid black;
 position: absolute;
 }
 
-.line2{
-width: 100%;
-border-bottom: 3px solid black;
-padding: 5px;
-position: relative;
-}
-
-.row{
-  padding-top: 5px;
-}
-
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 25%;
-  padding: 10px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.search-container{
-  box-sizing: border-box;
-}
-
 .search-container input[type=text] {
   padding: 10px;
   font-size: 17px;
@@ -97,44 +69,33 @@ position: relative;
   display: table;
 }
 
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  margin:auto;
-  display:block;
+.menu {
+  width: 25%;
+  float: left;
+  padding: 15px;
+  border: 1px solid red;
 }
 
-.dropdown {
-  padding-top: 5px;
+.main {
+  width: 75%;
+  float: left;
+  padding: 15px;
+  /*border: 1px solid red;*/
 }
 
-.dropdown-content {
-  display: none;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  text-align: center;
+  font-size: 30px;
 }
 
 
