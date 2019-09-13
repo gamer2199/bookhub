@@ -96,3 +96,8 @@ input[type=submit]:hover {
   margin: 4px 2px;
   cursor: pointer;
 }
+
+.column2 {
+  flex: 50%;
+  padding: 10px;
+}

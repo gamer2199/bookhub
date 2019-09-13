@@ -37,38 +37,6 @@ border-bottom: 3px solid black;
 position: absolute;
 }
 
-.search-container input[type=text] {
-  padding: 10px;
-  font-size: 17px;
-  border: 1px solid grey;
-  float: left;
-  width: 80%;
-  background: #f1f1f1;
-}
-
-.search-container button{
-  float: right;
-  width: 12%;
-  padding: 10px;
-  background: #2196F3;
-  height: 42px;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none;
-  cursor: pointer;
-}
-
-.search-container button:hover {
-  background: #0b7dda;
-}
-
-.search-container::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
 .menu {
   width: 25%;
   float: left;
@@ -98,4 +66,8 @@ position: absolute;
   font-size: 30px;
 }
 
+.dropdown-content{
+   width: max-content !important;
+   height:auto !important;
+}
 
