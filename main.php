@@ -29,95 +29,123 @@
           </div>
         </form>
       </div>
-    </nav>
-    
+    </nav>  
   </div>
+
 </div>
 
 
 <div class="main">
 
   <div class="row">
+    <table class="responsive-table">
+      <tr>
+        <th>Cover</th>
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Price</th>
+      </tr>
+      <?php
+        $host = "localhost";
+        $dbUserName = "root";
+        $dbPass = "2199";
+        $dbName = "accounts";
 
-      <div class="col s4">
-        <!-- Promo Content 1 goes here -->
-        <div class="row">
-          <div class="col s12 m7">
-            <div class="card">
-              <div class="card-image">
-                <img src="test.jpg">
-              </div>
-              <div class="card-content">
-                <h5> Book Title </h5>
-                <p> Book Desc </p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
 
-      <div class="col s4">
-        <!-- Promo Content 1 goes here -->
-        <div class="row">
-          <div class="col s12 m7">
-            <div class="card">
-              <div class="card-image">
-                <img src="test.jpg">
-              </div>
-              <div class="card-content">
-                <h5> Book Title </h5>
-                <p> Book Desc </p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        if($conn->connect_error){
+          die("Connection Failed: " . $conn->connect_error);
+        }
 
-      <div class="col s4">
-        <!-- Promo Content 1 goes here -->
-        <div class="row">
-          <div class="col s12 m7">
-            <div class="card">
-              <div class="card-image">
-                <img src="test.jpg">
-              </div>
-              <div class="card-content">
-                <h5> Book Title </h5>
-                <p> Book Desc </p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        $query = "select bookname,price,author,bookcover from book_records";
+        $result = mysqli_query($conn,$query);
+
+        if(mysqli_num_rows($result) > 0){
+          while($row = $result-> fetch_assoc()){
+            echo 
+              "<tr>
+              <td><img src='data:image/jpeg;base64,'". base64_encode($row["bookcover"]) ."/></td>
+              <td>". $row["bookname"] ."</td>
+              <td>". $row["author"] ."</td>
+              <td>" .$row["price"] . "</td>
+              </tr>";
+          }
+          echo "</table>";
+        }
+        else{
+              echo "0 Result";
+            }
+            $conn->close();
+      ?>
+      </table>
   </div>
+
+
+
 </div>
 
 
 </body>
 </html>
 
-    <!-- <div class="row">
-    <div class="col s12 m7">
-      <div class="card">
-        <div class="card-image">
-          <img src="test.jpg">
+
+     <!--  <div class="col s4"> -->
+        <!-- Promo Content 1 goes here -->
+        <!-- <div class="row">
+          <div class="col s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <img src="test.jpg">
+              </div>
+              <div class="card-content">
+                <h5> Book Title </h5>
+                <p> Book Desc </p>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-content">
-          <h5> Book Title </h5>
-          <p> Book Desc </p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
+      </div> -->
+
+     <!--  <div class="col s4"> -->
+        <!-- Promo Content 1 goes here -->
+       <!--  <div class="row">
+          <div class="col s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <img src="test.jpg">
+              </div>
+              <div class="card-content">
+                <h5> Book Title </h5>
+                <p> Book Desc </p>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div class="col s4">
+        Promo Content 1 goes here
+        <div class="row">
+          <div class="col s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <img src="test.jpg">
+              </div>
+              <div class="card-content">
+                <h5> Book Title </h5>
+                <p> Book Desc </p>
+              </div>
+              <div class="card-action">
+                <a href="#">This is a link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   </div> -->

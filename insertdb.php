@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		echo "Empty Fields";
 	}
 
-	$sql = "INSERT INTO creds VALUES ('$_POST[username]','$_POST[firstname]','$_POST[lastname]','$_POST[email]', '$_POST[password]')";
+	$sql = "INSERT INTO creds VALUES ('$_POST[first_name]','$_POST[last_name]','$_POST[email_signup]', '$_POST[password_signup]')";
 
 	$result = mysqli_query($conn,$sql);
 	header("Location: main.html");

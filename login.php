@@ -17,7 +17,7 @@
       $myusername = mysqli_real_escape_string($conn,$_POST['username']);
       $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
       
-      $sql = "SELECT * FROM creds WHERE username = '$_POST[username]' and password = '$_POST[password]'";
+      $sql = "SELECT * FROM creds WHERE email = '$_POST[email_login]' and password = '$_POST[password_login]'";
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
@@ -28,12 +28,12 @@
 		
       if($count == 1) {
          //session_register($_POST[username]);
-         $_SESSION['login_user'] = $_POST[username];
+         $_SESSION['login_user'] = $_POST[email_login];
          
          header("location: main.html");
       }else {
          $error = "Your Login Name or Password is invalid";
-         header("location: test.html");
+         header("location: rand.html");
       }
    }
 ?>

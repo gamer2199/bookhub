@@ -37,16 +37,16 @@
         <div class="row">
 
           <div class="column2">
-            <form class="col s6">
+            <form class="col s6" action = "login.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
               <h4 style="text-align:center; color: white;">Login</h4>
 
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="email" type="text" class="validate">
-                  <label for="email">Email</label>
+                  <input id="email_login" name = "email_login" type="text" class="validate">
+                  <label for="email_login">Email</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="password_login" type="password" class="validate">
+                  <input id="password_login" name = "password_login" type="password" class="validate">
                   <label for="password_login">Password</label>
                 </div>
               </div>
@@ -56,37 +56,37 @@
               </div>
 
               <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Forgot Password</button>
+                <button class="btn waves-effect waves-light red darken-2" type="submit" name="action">Forgot Password</button>
               </div>
 
             </form>
           </div>
 
             <div class="column2">
-              <form class="col s6">
+              <form class="col s6" action = "insertdb.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
                 <h4 style="text-align:center; color: white;">Signup</h4>
 
                 <div class="row">
                   <div class="input-field col s6">
-                    <input id="first_name" type="text" class="validate">
+                    <input id="first_name" name = "first_name" type="text" class="validate">
                     <label for="first_name">First Name</label>
                   </div>
                   <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
+                    <input id="last_name" name = "last_name" type="text" class="validate">
                     <label for="last_name">Last Name</label>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="input-field col s12">
-                    <input id="password_signup" type="password" class="validate">
+                    <input id="password_signup" name = "password_signup" type="password" class="validate">
                     <label for="password_signup">Password</label>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="input-field col s12">
-                    <input id="email_signup" type="email" class="validate">
+                    <input id="email_signup" name = "email_signup" type="email" class="validate">
                     <label for="email_signup">Email</label>
                   </div>
                 </div>
@@ -99,7 +99,7 @@
             </div>
 
             <div class="row">
-              <a href="main.html">Skip Signin or Signup</a>
+              <a href="main.php">Skip Login or Signup</a>
             </div>
 
           </div>
@@ -111,286 +111,3 @@
 
 </body>
 </html>
-      <!--   <a href="#!" id="sign-in" class="btn waves-effect waves-teal scale-transition">SIGN IN</a>
-		<a href="#!" id="sign-up" class="btn waves-effect waves-teal scale-transition">SIGN UP</a> -->
-
-<!-- 		<form class="form scale-transition scale-out" action = "login.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
-
-			<p class="containerText"> Existing Customer </p>
-
-			<input id="email'" type="text" class="validate" placeholder="Email" required>
-
-			<input id="password" type="password" class="validate" placeholder="Password" required>
-
-			<input name ="btn-signin" type = "submit" value = " Sign In "/>
-			<input name ="btn-forgotPass" type = "submit" value = " Forgot Password " style = "background-color: red;"/>
-		</form>
-
-		<form class="form2 scale-transition scale-out" action = "insertdb.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
-
-			<p class="containerText"> New Customer </p>
-
-			<input id="first_name" type="text" class="validate" placeholder="First Name" required>
-
-          	<input id="last_name" type="text" class="validate" placeholder="Last Name" required>
-
-			<input id="email'" type="text" class="validate" placeholder="Email" required>
-
-			<input id="password" type="password" class="validate" placeholder="Password" required>
-
-			<input name ="btn-signup" type = "submit" value = " Sign Up "/>
-		</form>
-
-	<script>
-		$('#sign-in').click(function() {
-			$('#sign-in').addClass('scale-out');
-			$('#sign-up').addClass('scale-out');
-			$('.form').removeClass('scale-out').addClass('scale-in');
-		})
-
-		$('#sign-up').click(function() {
-			$('#sign-in').addClass('scale-out');
-			$('#sign-up').addClass('scale-out');
-			$('.form2').removeClass('scale-out').addClass('scale-in');
-		})
-	</script>
-
-        </div>
-
-
-      </div>
-    </div> -->
-
-
-	
-	
-
-	<!-- <a href="#!" id="sign-in" class="btn waves-effect waves-teal scale-transition">SIGN IN</a>
-	<a href="#!" id="sign-up" class="btn waves-effect waves-teal scale-transition">SIGN UP</a>
-
-	<form class="form scale-transition scale-out" action = "login.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
-
-		<p class="containerText"> Existing Customer </p>
-
-		<input id="username'" type="text" class="validate" placeholder="Username" required>
-
-		<input id="password" type="password" class="validate" placeholder="Password" required>
-
-		<input name ="btn-signin" type = "submit" value = " Sign In "/>
-		<input name ="btn-forgotPass" type = "submit" value = " Forgot Password " style = "background-color: red;"/>
-	</form>
-
-	<script>
-		$('#sign-in').click(function() {
-			$('#sign-in').addClass('scale-out');
-			$('#sign-up').addClass('scale-out');
-			$('.form').removeClass('scale-out').addClass('scale-in');
-		})
-	</script> -->
-
-
-  <!-- <div class="row">
-  	
-  	<div class="col s6">
-      	<h4>BOOOOKHUBB</h4>
-	</div>
-
-	<div class="col s6">
-      	<a href="#!" id="sign-in" class="btn waves-effect waves-teal scale-transition">SIGN IN</a>
-		<a href="#!" id="sign-up" class="btn waves-effect waves-teal scale-transition">SIGN UP</a>
-		<input class="login btn waves-effect waves-light scale-transition scale-out" type="submit" value="LOG IN"/>
-
-
-		<script>
-			$('#sign-in').click(function() {
-		    $('#sign-in').addClass('scale-out');
-		    $('#sign-up').addClass('scale-out');
-		    $('.login').removeClass('scale-out').addClass('scale-in');
-			})
-
-		</script>
-	</div>
-
-</div> -->
-
-      <!-- <div class="col s4">
-        <form class="col s12">
-      		<div class="row">
-        		<div class="input-field col s6">
-          			<input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          			<label for="first_name">First Name</label>
-        		</div>
-
-        		<div class="input-field col s6">
-          			<input id="last_name" type="text" class="validate">
-          			<label for="last_name">Last Name</label>
-        		</div>
-      		</div>
-
-      		<div class="row">
-        		<div class="input-field col s12">
-          			<input id="password" type="password" class="validate">
-          			<label for="password">Password</label>
-        		</div>
-      		</div>
-
-      		<div class="row">
-        		<div class="input-field col s12">
-		          <input id="email" type="email" class="validate">
-		          <label for="email">Email</label>
-        		</div>
-      		</div>
-    	</form>
-      </div>
-
-      <div class="col s4">
-
-        <div class="signin">
-		    <form class="form" action = "login.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
-
-				<p class="containerText"> Existing Customer </p>
-				<input type = "text" name = "username" class = "box" placeholder="Username" required/>
-
-		        <input type = "password" name = "password" class = "box" placeholder="Password" required/>
-
-		        <input name ="btn-signin" type = "submit" value = " Sign In "/>
-		        <input name ="btn-forgotPass" type = "submit" value = " Forgot Password " style = "background-color: red;"/>
-		    </form>
-		</div>
-
-      </div>
-  </div>
- -->
-<!-- <div class="row"> -->
-
- <!--  <div class="column left">
-    	<div class="welcomeMsg">
-  			<h3>Welcome to BookHub</h3>
-  			<div class = "description">
-  				<p>The Readers Heaven</p>
-  			</div>
-		</div>
-  </div>
-
-  <div class="column middle">
-  	<div class="signin">
-	    <form class="form" action = "login.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
-
-			<p class="containerText"> Existing Customer </p>
-			<input type = "text" name = "username" class = "box" placeholder="Username" required/>
-
-	        <input type = "password" name = "password" class = "box" placeholder="Password" required/>
-
-	        <input name ="btn-signin" type = "submit" value = " Sign In "/>
-	        <input name ="btn-forgotPass" type = "submit" value = " Forgot Password " style = "background-color: red;"/>
-	    </form>
-	</div>
-  </div>
-
-  <div class="column right">
-
-  	 <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-          This is an inline input field:
-          <div class="input-field inline">
-            <input id="email_inline" type="email" class="validate">
-            <label for="email_inline">Email</label>
-            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-
-
-  </div>
-
-</div>
-
-<div class="skipMsg">
-	<a href="main.html">Skip Sign Up/ Sign In >></a>
-</div> -->
-
-
-<!-- <div class="row">
-  	<div class="column">
-  		<div class="welcomeMsg">
-  			<h3>Welcome to BookHub</h3>
-  			<p>The Readers Heaven</p>
-		</div>
-	</div>
-
-  	<div class="column">
-  	
-  		<div class="signup">
-	      	<form class="form" action = "insertdb.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
-
-				<p class="containerText"> Signup </p>
-				<input type = "text" name = "username" class = "box" placeholder="Username" required/>
-
-	            <input type = "text" name = "firstname" class = "box" placeholder="First Name" required/>
-	            <input type = "text" name = "lastname" class = "box" placeholder="Last Name" required/>
-
-	            <input type = "text" name = "email" class = "box" placeholder="Email" required/>
-
-	            <input type = "password" name = "password" class = "box" placeholder="Password" required/>
-	            <input type = "password" name = "confirmpassword" class = "box" placeholder="Confirm Password" required />
-
-	            <input name ="btn-signup" type = "submit" value = " Sign Up "/>
-
-		   	</form>
-	     </div>
-	</div>
-
-  	<div class="column">
-  		<p>Text</p>
-  	</div>
-</div> -->
-
-<!-- <div class="signup">
-	    <form class="form" action = "insertdb.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
-
-			<p class="containerText"> New Customer </p>
-			<input type = "text" name = "username" class = "box" placeholder="Username" required/>
-
-	        <input type = "text" name = "firstname" class = "box" placeholder="First Name" required/>
-	        <input type = "text" name = "lastname" class = "box" placeholder="Last Name" required/>
-
-	        <input type = "text" name = "email" class = "box" placeholder="Email" required/>
-
-	        <input type = "password" name = "password" class = "box" placeholder="Password" required/>
-	        <input type = "password" name = "confirmpassword" class = "box" placeholder="Confirm Password" required />
-
-	        <input name ="btn-signup" type = "submit" value = " Sign Up "/>
-		</form>
-	</div> -->
