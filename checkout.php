@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/checkout.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 
@@ -20,7 +20,14 @@
         <li><a href="profile.html">Profile</a></li>
       </ul>
     </div>
-  </nav>
+    <div class="nav-wrapper">
+      <div class="col s12">
+        <a href="cart.html" class="breadcrumb">Cart</a>
+        <a href="#!" class="breadcrumb">Address</a>
+        <a href="#!" class="breadcrumb">Payment</a>
+      </div>
+    </div>
+</nav>
 
   <ul class="sidenav" id="mobile-demo">
     <li><a href="sass.html">Sass</a></li>
@@ -30,70 +37,61 @@
 
 <div class="line"></div>
 
-<div class="menu">
-
-  <nav>
-      <div class="nav-wrapper">
-        <form>
-          <div class="input-field">
-            <input id="search" type="search" required>
-            <label class="label-icon" for="search">Search</label>
-          </div>
-      </form>
+<div id="blue" class="block blue">
+  <nav class="pushpin-demo-nav" data-target="blue">
+    <div class="nav-wrapper light-blue">
+      <div class="container">
+        <a href="#" class="brand-logo">Blue</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#!">Blue Link 1</a></li>
+          <li><a href="#!">Blue Link 2</a></li>
+          <li><a href="#!">Blue Link 3</a></li>
+        </ul>
+      </div>
     </div>
-  </nav>  
+  </nav>
 </div>
 
+<div id="red" class="block red lighten-1">
+  <nav class="pushpin-demo-nav" data-target="red">
+    <div class="nav-wrapper red">
+      <div class="container">
+        <a href="#" class="brand-logo">Red</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#!">Red Link 1</a></li>
+          <li><a href="#!">Red Link 2</a></li>
+          <li><a href="#!">Red Link 3</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </div>
 
-
-<div class="main">
-
-  <div class="row">
-    <table class="responsive-table">
-      <tr>
-        <th>Cover</th>
-        <th>Book Name</th>
-        <th>Author</th>
-        <th>Price</th>
-      </tr>
-      <?php
-        $host = "localhost";
-        $dbUserName = "root";
-        $dbPass = "2199";
-        $dbName = "accounts";
-
-        $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
-
-        if($conn->connect_error){
-          die("Connection Failed: " . $conn->connect_error);
-        }
-
-        $query = "select bookname,price,author,bookcover from book_records";
-        $result = mysqli_query($conn,$query);
-
-        if(mysqli_num_rows($result) > 0){
-          while($row = $result-> fetch_assoc()){
-            echo 
-              "<tr>
-              <td><img src='data:image/jpeg;base64,'". base64_encode($row["bookcover"]) ."/></td>
-              <td>". $row["bookname"] ."</td>
-              <td>". $row["author"] ."</td>
-              <td>" .$row["price"] . "</td>
-              </tr>";
-          }
-          echo "</table>";
-        }
-        else{
-              echo "0 Result";
-            }
-            $conn->close();
-      ?>
-      </table>
-  </div>
-
+<div id="green" class="block green lighten-1">
+  <nav class="pushpin-demo-nav" data-target="green">
+    <div class="nav-wrapper green">
+      <div class="container">
+        <a href="#" class="brand-logo">Green</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#!">Green Link 1</a></li>
+          <li><a href="#!">Green Link 2</a></li>
+          <li><a href="#!">Green Link 3</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </div>
 
+<script type="text/javascript">
+  $('.pushpin-demo-nav').each(function() {
+	var $this = $(this);
+	var $target = $('#' + $(this).attr('data-target'));
+	$this.pushpin({
+	  top: $target.offset().top,
+	  bottom: $target.offset().top + $target.outerHeight() - $this.height()
+	});
+  });
+</script>
 
 </body>
 </html>

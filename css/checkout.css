@@ -1,36 +1,41 @@
-{
+*{
   font-family: "Arial", Helvetica ,sans-serif;
+  box-sizing: border-box;
 }
-
 
 body {
  background-color: #cccccc;
-}
-
-
-ul {
-  margin: auto;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: black;
-  font-size: 30px;
-  padding: 14px 16px;
-  text-decoration: none;
 }
 
 .line{
 width: 100%;
 border-bottom: 3px solid black;
 position: absolute;
+}
+
+html, body, .block {
+  height: 100%;
+}
+
+nav ul li a:hover, nav ul li a.active {
+  background-color: rgba(0,0,0,.1);
+}
+
+footer {
+  padding-left: 0;
+}
+
+// Class for when element is above threshold
+.pin-top {
+  position: relative;
+}
+
+// Class for when element is below threshold
+.pin-bottom {
+  position: relative;
+}
+
+// Class for when element is pinned
+.pinned {
+  position: fixed !important;
 }

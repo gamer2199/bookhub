@@ -9,28 +9,6 @@ body {
  background-color: #cccccc;
 }
 
-
-ul {
-  margin: auto;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: black;
-  font-size: 30px;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
 .line{
 width: 100%;
 border-bottom: 3px solid black;
