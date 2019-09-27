@@ -22,7 +22,8 @@
     </div>
 </nav>
 
-<div id="blue" class="block"> <!-- Add Color next to block for color -->
+<div id="blue" class="block blue"> <!-- Add Color next to block for color -->
+
   <nav class="pushpin-demo-nav" data-target="blue">
     <div class="nav-wrapper light-blue">
       <div class="container">
@@ -43,7 +44,7 @@
 
 </div>
 
-<div id="red" class="block">
+<div id="red" class="block red">
   <nav class="pushpin-demo-nav" data-target="red">
     <div class="nav-wrapper red">
       <div class="container">
@@ -56,20 +57,43 @@
     <div class="col s12">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <form action = "order.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname_checkout" name="fname_checkout">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email_checkout" name="email_checkout">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="address_checkout" name="address_checkout">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city_checkout" name="city_checkout">
-            <label for="state">State</label>
-            <input type="text" id="state_checkout" name="state_checkout">
-            <label for="zip">Zip</label>
-            <input type="text" id="zip_checkout" name="zip_checkout">
-          </form>
+        	<form action = "order.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
+
+	            <div class="row">
+	            	<div class="input-field">
+	                  <input id="name_checkout" name = "name_checkout" type="text" class="validate">
+	                  <label for="name_checkout">Full Name</label>
+	                </div>
+	            </div>
+
+	            <div class="row">
+	                <div class="input-field">
+	                  <input id="street_checkout" name = "street_checkout" type="text" class="validate">
+	                  <label for="street_checkout">Street</label>
+	                </div>
+	            </div>
+
+	            <div class="row">
+	                <div class="input-field">
+	                  <input id="city_checkout" name = "city_checkout" type="text" class="validate">
+	                  <label for="city_checkout">City</label>
+	                </div>
+	            </div>
+
+	            <div class="row">
+	                <div class="input-field">
+	                  <input id="state_checkout" name = "state_checkout" type="text" class="validate">
+	                  <label for="state_checkout">State</label>
+	                </div>
+	            </div>
+
+	            <div class="row">
+	                <div class="input-field">
+	                  <input id="zip_checkout" name = "zip_checkout" type="text" class="validate">
+	                  <label for="zip_checkout">Zip</label>
+	                </div>
+	            </div>
+        	</form>
         </div>
       </div>
     </div>
@@ -90,15 +114,42 @@
     <div class="col s12">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
-            <label for="expyear">Exp Year</label>
-            <input type="text" id="expyear" name="expyear" placeholder="2018">
-            <label for="cvv">CVV</label>
-            <input type="text" id="cvv" name="cvv" placeholder="352">
+
+        	<div class="row">
+	            <div class="input-field">
+	                <input id="cname" name = "cname" type="text" class="validate">
+	                <label for="cname">Name on Card</label>
+	            </div>
+	        </div>
+
+	        <div class="row">
+	            <div class="input-field">
+	                <input id="cno" name = "cno" type="text" class="validate">
+	                <label for="cno">Card Number</label>
+	            </div>
+	        </div>
+
+	        <div class="row">
+	            <div class="input-field">
+	                <input id="card_expiry_month" name = "card_expiry_month" type="text" class="validate">
+	                <label for="card_expiry_month">Card Expiry Month</label>
+	            </div>
+	        </div>
+
+	        <div class="row">
+	            <div class="input-field">
+	                <input id="card_expiry_year" name = "card_expiry_year" type="text" class="validate">
+	                <label for="card_expiry_year">Card Expiry Year</label>
+	            </div>
+	        </div>
+
+	        <div class="row">
+	            <div class="input-field">
+	                <input id="card_cvv" name = "card_cvv" type="text" class="validate">
+	                <label for="card_cvv">CVV</label>
+	            </div>
+	        </div>
+	        
         </div>
       </div>
     </div>
