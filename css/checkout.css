@@ -7,12 +7,6 @@ body {
  background-color: #cccccc;
 }
 
-.line{
-width: 100%;
-border-bottom: 3px solid black;
-position: absolute;
-}
-
 html, body, .block {
   height: 100%;
 }

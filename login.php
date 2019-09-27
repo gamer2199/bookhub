@@ -5,8 +5,8 @@
    $_SESSION['login_user'] = '';
 
    $host = "localhost";
-   $dbUserName = "root";
-   $dbPass = "2199";
+   $dbUserName = "kapil";
+   $dbPass = "goodwill2199";
    $dbName = "accounts";
 
    $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
@@ -33,7 +33,7 @@
          header("location: main.html");
       }else {
          $error = "Your Login Name or Password is invalid";
-         header("location: rand.html");
+         header("location: error.html");
       }
    }
 ?>
