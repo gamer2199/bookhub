@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 
@@ -25,21 +25,62 @@
 <div class="line"></div>
 
 <div class="menu">
-
   <nav>
-      <div class="nav-wrapper">
-        <form>
-          <div class="input-field">
-            <input id="search" type="search" required>
-            <label class="label-icon" for="search">Search</label>
-          </div>
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" placeholder="Search" required>
+        </div>
       </form>
     </div>
-  </nav>  
-</div>
+  </nav> 
 
-</div>
+  <form action="#">
+    <p> New Arrivals </p>
+    <p>
+      <label>
+        <input type="checkbox" />
+        <span>Last 30 Days</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input type="checkbox" />
+        <span>Last 60 Days</span>
+      </label>
+    </p>
 
+    <p> Price Range </p>
+    <div class="row"> 
+      <div class="input-field col s12 m6">
+        <select class="browser-default">
+          <option value="1">0</option>
+          <option value="2">500</option>
+          <option value="3">1000</option>
+        </select>
+      </div>
+      <div class="input-field col s12 m6">
+        <select class="browser-default">
+          <option value="1">0</option>
+          <option value="2">500</option>
+          <option value="3">1000</option>
+        </select>
+      </div>
+    </div>
+
+    <p> Languages </p>
+    <div class="row"> 
+      <div class="input-field col s12 m6">
+        <select class="browser-default">
+          <option value="1">English</option>
+          <option value="2">Hindi</option>
+          <option value="3">Marathi</option>
+        </select>
+      </div>
+    </div>
+  </form>
+         
+</div>
 
 <div class="main">
 
@@ -50,11 +91,12 @@
         <th>Book Name</th>
         <th>Author</th>
         <th>Price</th>
+        <th></th>
       </tr>
       <?php
         $host = "localhost";
-        $dbUserName = "kapil"; //Enter "kapil" for college
-        $dbPass = "goodwill2199"; // Enter "goodwill2199" for college
+        $dbUserName = "root"; //Enter "kapil" for college
+        $dbPass = "2199"; // Enter "goodwill2199" for college
         $dbName = "accounts";
 
         $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
@@ -68,13 +110,16 @@
 
         if(mysqli_num_rows($result) > 0){
           while($row = $result-> fetch_assoc()){
-            echo 
-              "<tr>
-              <td><img src='data:image/jpeg;base64,'". base64_encode($row["bookcover"]) ."/></td>
-              <td>". $row["bookname"] ."</td>
-              <td>". $row["author"] ."</td>
-              <td>" .$row["price"] . "</td>
-              </tr>";
+            echo "<tr>";
+
+            echo "<td>";?> 
+            <img src="<?php echo $row['bookcover']; ?>" height="100" width="100">
+            <?php echo "</td>"; 
+            
+            echo "<td>"; echo $row['bookname']; echo "</td>";
+            echo "<td>"; echo $row['author']; echo "</td>";
+            echo "<td>"; echo $row['price']; echo "</td>";
+            // echo "<td> <button class='btn waves-effect waves-light red darken-2' type='submit' name='action'>Add to Cart</button> </td>";
           }
           echo "</table>";
         }
@@ -88,68 +133,5 @@
 
 </div>
 
-
 </body>
 </html>
-
-
-     <!--  <div class="col s4"> -->
-        <!-- Promo Content 1 goes here -->
-        <!-- <div class="row">
-          <div class="col s12 m7">
-            <div class="card">
-              <div class="card-image">
-                <img src="test.jpg">
-              </div>
-              <div class="card-content">
-                <h5> Book Title </h5>
-                <p> Book Desc </p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-     <!--  <div class="col s4"> -->
-        <!-- Promo Content 1 goes here -->
-       <!--  <div class="row">
-          <div class="col s12 m7">
-            <div class="card">
-              <div class="card-image">
-                <img src="test.jpg">
-              </div>
-              <div class="card-content">
-                <h5> Book Title </h5>
-                <p> Book Desc </p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col s4">
-        Promo Content 1 goes here
-        <div class="row">
-          <div class="col s12 m7">
-            <div class="card">
-              <div class="card-image">
-                <img src="test.jpg">
-              </div>
-              <div class="card-content">
-                <h5> Book Title </h5>
-                <p> Book Desc </p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div> -->
