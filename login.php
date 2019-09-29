@@ -1,39 +1,77 @@
 <?php
-   session_start();
-
-   $_SESSION['message'] = '';
-   $_SESSION['login_user'] = '';
-
-   $host = "localhost";
-   $dbUserName = "kapil";
-   $dbPass = "goodwill2199";
-   $dbName = "accounts";
-
-   $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
    
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-      
-      $myusername = mysqli_real_escape_string($conn,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
-      
-      $sql = "SELECT * FROM creds WHERE email = '$_POST[email_login]' and password = '$_POST[password_login]'";
-      $result = mysqli_query($conn,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-      
-      $count = mysqli_num_rows($result);
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if($count == 1) {
-         //session_register($_POST[username]);
-         $_SESSION['login_user'] = $_POST[email_login];
-         
-         header("location: main.html");
-      }else {
-         $error = "Your Login Name or Password is invalid";
+   //https://www.youtube.com/watch?v=8G7271LAyHY
+
+   session_start(); //Starting Session
+   $error = ''; //Variable to store error message
+
+   if(isset($_POST['submit'])){
+      if(empty($_POST['email_login']) || empty($_POST['password_login'])){
+         $error = "Username or Password Invalid";
          header("location: error.html");
       }
+      else{
+         $email = $_POST['email_login'];
+         $password = $_POST['password_login'];
+
+         $host = "localhost";
+         $dbUserName = "root";
+         $dbPass = "2199";
+         $dbName = "accounts";
+
+         $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
+
+         $query = "SELECT * from creds where email=? AND password=? LIMIT 1";
+
+         //TO PROTECT AGAINST SQL INJECTIONS
+         $stmt = $conn->prepare($query);
+         $stmt->bind_param("ss", $email, $password); //s->string 
+         $stmt->execute();
+         $stmt->bind_result($email, $password);
+         $stmt->store_result();
+
+         if($stmt->fetch()){ //Fetching contents of row
+
+            $_SESSION['login_user'] = $email; //Init Session
+            header("location: main.php"); //Redirecting to main page
+         }
+         else{
+            $error = "Username or Password Invalid";
+            header("location: error.html"); //Redirecting to main page
+         }
+         mysqli_close();
+      }
    }
+   // $_SESSION['message'] = '';
+   // $_SESSION['login_user'] = '';
+
+   
+
+  
+   
+   // if($_SERVER["REQUEST_METHOD"] == "POST") {
+   //    // username and password sent from form 
+      
+   //    $myusername = mysqli_real_escape_string($conn,$_POST['username']);
+   //    $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
+      
+   //    $sql = "SELECT * FROM creds WHERE email = '$_POST[email_login]' and password = '$_POST[password_login]'";
+   //    $result = mysqli_query($conn,$sql);
+   //    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+   //    $active = $row['active'];
+      
+   //    $count = mysqli_num_rows($result);
+      
+   //    // If result matched $myusername and $mypassword, table row must be 1 row
+		
+   //    if($count == 1) {
+   //       //session_register($_POST[username]);
+   //       $_SESSION['login_user'] = $_POST[email_login];
+         
+   //       header("location: main.php");
+   //    }else {
+   //       $error = "Your Login Name or Password is invalid";
+   //       header("location: error.html");
+   //    }
+   // }
 ?>

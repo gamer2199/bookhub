@@ -1,3 +1,13 @@
+<?php
+
+include ('session.php');
+
+if(!isset($_SESSION['login_user'])){
+  header("location: home.php"); //Redirecting to home page
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +18,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 
@@ -19,6 +29,9 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="profile.html">Profile</a></li>
       </ul>
+  </div>
+  <div>
+    <h5 class="center-align">Welcome <?php echo $login_session; ?> </h5>
   </div>
 </nav>
 

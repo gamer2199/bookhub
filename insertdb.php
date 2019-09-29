@@ -4,8 +4,8 @@ session_start();
 $_SESSION['message'] = '';
 
 $host = "localhost";
-$dbUserName = "kapil";
-$dbPass = "goodwill2199";
+$dbUserName = "root";
+$dbPass = "2199";
 $dbName = "accounts";
 
 $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
