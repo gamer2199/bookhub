@@ -15,21 +15,20 @@ nav ul li a:hover, nav ul li a.active {
   background-color: rgba(0,0,0,.1);
 }
 
-footer {
-  padding-left: 0;
-}
+/* Class for when element is above threshold */
 
-// Class for when element is above threshold
 .pin-top {
   position: relative;
 }
 
-// Class for when element is below threshold
+/* Class for when element is below threshold */
+
 .pin-bottom {
   position: relative;
 }
 
-// Class for when element is pinned
+/* Class for when element is pinned */
+
 .pinned {
   position: fixed !important;
 }

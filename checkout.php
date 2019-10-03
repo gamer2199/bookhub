@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" type="text/css" href="css/checkout.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
 
@@ -22,28 +22,33 @@
     </div>
 </nav>
 
+<!-- Cart Details Pushpin -->
 <div id="blue" class="block blue"> <!-- Add Color next to block for color -->
 
   <nav class="pushpin-demo-nav" data-target="blue">
     <div class="nav-wrapper light-blue">
       <div class="container">
-        <a href="#" class="brand-logo">Cart Details</a>
+        <span class="brand-logo">Cart Details</a>
       </div>
     </div>
   </nav>
+  
+  
 
-  <div class="row">
-    <div class="col s12">
-      <div class="card blue-grey darken-1"> <!-- Card Color -->
+  <!-- <div class="row">
+    <div class="col s12"> -->
+	<!-- Card Color -->
+      <!-- <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <span class="card-title">Cart_DETAILS</span>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 </div>
 
+<!-- Shipping Address Pushpin -->
 <div id="red" class="block red">
   <nav class="pushpin-demo-nav" data-target="red">
     <div class="nav-wrapper red">
@@ -53,7 +58,7 @@
     </div>
   </nav>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col s12">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
@@ -99,9 +104,10 @@
     </div>
   </div>
 
-</div>
+</div> -->
 
-<div id="green" class="block">
+<!-- Payment Pushpin -->
+<div id="green" class="block green">
   <nav class="pushpin-demo-nav" data-target="green">
     <div class="nav-wrapper green">
       <div class="container">
@@ -158,14 +164,21 @@
 </div>
 
 <script type="text/javascript">
-  $('.pushpin-demo-nav').each(function() {
-	var $this = $(this);
-	var $target = $('#' + $(this).attr('data-target'));
-	$this.pushpin({
-	  top: $target.offset().top,
-	  bottom: $target.offset().top + $target.outerHeight() - $this.height()
-	});
-  });
+
+document.addEventListener("DOMContentLoaded", function() {
+  var pushpins = document.querySelectorAll(".pushpin-demo-nav");
+  pushpins.forEach(function(element) {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var elemRect = element.getBoundingClientRect();
+    var parentRect = element.parentElement.getBoundingClientRect();
+    var elemTop = scrollTop + elemRect.top;
+
+    var instancePushpin = M.Pushpin.init(element, {
+      top: elemTop,
+      bottom: elemTop + parentRect.height - elemRect.height
+    });
+  })
+});
 </script>
 
 </body>

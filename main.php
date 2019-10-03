@@ -1,10 +1,10 @@
 <?php
 
-include ('session.php');
+// include ('session.php');
 
-if(!isset($_SESSION['login_user'])){
-  header("location: home.php"); //Redirecting to home page
-}
+// if(!isset($_SESSION['login_user'])){
+//   header("location: home.php"); //Redirecting to home page
+// }
 
 ?>
 
@@ -31,7 +31,7 @@ if(!isset($_SESSION['login_user'])){
       </ul>
   </div>
   <div>
-    <h5 class="center-align">Welcome <?php echo $login_session; ?> </h5>
+    <h5 class="center-align">Welcome</h5> <?php //echo $login_session; ?>
   </div>
 </nav>
 
@@ -110,7 +110,7 @@ if(!isset($_SESSION['login_user'])){
         $host = "localhost";
         $dbUserName = "root"; //Enter "kapil" for college
         $dbPass = "2199"; // Enter "goodwill2199" for college
-        $dbName = "accounts";
+        $dbName = "books";
 
         $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
 
@@ -118,7 +118,7 @@ if(!isset($_SESSION['login_user'])){
           die("Connection Failed: " . $conn->connect_error);
         }
 
-        $query = "select bookname,price,author,bookcover from book_records";
+        $query = "select title,author,price,cover from book_data";
         $result = mysqli_query($conn,$query);
 
         if(mysqli_num_rows($result) > 0){
@@ -126,13 +126,13 @@ if(!isset($_SESSION['login_user'])){
             echo "<tr>";
 
             echo "<td>";?> 
-            <img src="<?php echo $row['bookcover']; ?>" height="100" width="100">
+            <img src="data:image/jpeg;base64,<?php echo base64_encode( $row['cover'] ); ?>" width="150" height="250" />
             <?php echo "</td>"; 
             
-            echo "<td>"; echo $row['bookname']; echo "</td>";
+            echo "<td>"; echo $row['title']; echo "</td>";
             echo "<td>"; echo $row['author']; echo "</td>";
             echo "<td>"; echo $row['price']; echo "</td>";
-            // echo "<td> <button class='btn waves-effect waves-light red darken-2' type='submit' name='action'>Add to Cart</button> </td>";
+            echo "<td> <button class='btn waves-effect waves-light red darken-2' type='submit' name='action'>Add to Cart</button> </td>";
           }
           echo "</table>";
         }
