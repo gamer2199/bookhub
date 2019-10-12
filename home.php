@@ -16,6 +16,7 @@ if (isset($_SESSION['login_user'])){
 
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -37,45 +38,52 @@ if (isset($_SESSION['login_user'])){
 
 <div class="row">
 
-  <div class="col s12">
+  <div class="col s4">
 
-    <div class="card grey darken-2">
+    <div class="card grey darken-2 center-align">
       <div class="card-content white-text">
-          <h1 style="text-align:center;">Welcome to Bookhub</h1>
-          <p style="text-align:center;">The Reader's Heaven</p>
+        <h1 style="text-align:center;">Welcome to Bookhub</h1>
+        <p style="text-align:center;">The Reader's Heaven</p>
       </div>
 
       <div class="card-action">
         <div class="row">
 
         <!-- LOGIN FORM -->
-          <div class="column2">
-            <form class="col s6" action = "login1.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
-              <h4 style="text-align:center; color: white;">Login</h4>
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="email_login" name = "email_login" type="text" class="validate">
-                  <label for="email_login">Email</label>
-                </div>
-                <div class="input-field col s6">
-                  <input id="password_login" name = "password_login" type="password" class="validate">
-                  <label for="password_login">Password</label>
-                </div>
-              </div>
-
-              <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
-              </div>
-
-              <div class="row">
-                <button class="btn waves-effect waves-light red darken-2" type="submit" name="action">Forgot Password</button>
-              </div>
-
-            </form>
+        <form class="col" action = "login1.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
+          <h4 style="text-align:center; color: white;">Login</h4>
+          <div class="row">
+            <div class="input-field col">
+              <input id="email_login" name = "email_login" type="text" class="validate">
+              <label for="email_login">Email</label>
+            </div>
+            <div class="input-field col">
+              <input id="password_login" name = "password_login" type="password" class="validate">
+              <label for="password_login">Password</label>
+            </div>
           </div>
 
-          <!-- SIGNUP FORM -->
-          <div class="column2">
+          <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+          </div>
+
+          <div class="row">
+            <button class="btn waves-effect waves-light red darken-2" type="submit" name="action">Forgot Password</button>
+          </div>
+
+        </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+<!-- SIGNUP FORM -->
+          <!-- <div class="column2">
             <form class="col s6" action = "insertdb.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
               <h4 style="text-align:center; color: white;">Signup</h4>
 
@@ -109,18 +117,8 @@ if (isset($_SESSION['login_user'])){
               </div>
 
             </form>
-          </div>
+          </div> -->
 
-          <div class="row">
+          <!-- <div class="row">
             <a href="main.php">Skip Login or Signup</a>
-          </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-</body>
-</html>
+          </div> -->
