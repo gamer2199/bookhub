@@ -1,3 +1,10 @@
+<?php
+include('login.php'); // Includes Login Script
+if(isset($_SESSION['login_user'])){
+header("location: test.php"); // Redirecting To Profile Page
+}
+?>
+    
     <!doctype html>
     <html lang="en">
     <head>
@@ -17,8 +24,8 @@
             <a class="pure-menu-heading" href="">BookHub</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign Up</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Catalog</a></li>
+                <li class="pure-menu-item"><a href="signup.php" class="pure-menu-link">Sign Up</a></li>
             </ul>
         </div>
     </div>
@@ -28,7 +35,7 @@
             <div class="outer">
                 <div class="middle">
                     <div class="inner">
-                        <div class = "container" id=container style="background: url(css/gradient.jpg) repeat;">
+                        <div class = "container" id=login style="background: url(css/gradient.jpg) repeat;">
 
                                 <form class="col" action = "" method = "POST" enctype="multipart/form-data" autocomplete="off">
                                     <h1 style="text-align:center; color: white;">Login</h1>
@@ -41,7 +48,7 @@
                     
                                     <button class="pure-button pure-button-login" type="submit" name="action">LOGIN</button>
                                 
-                                    <button class="pure-button pure-button-forgetpass" type="submit" name="action">Forgot Password</button>
+                                    <a href = "forgotpass.php"> Forgot Password </a>
 
                                     <a href = "signup.php"> New User? Head to Signup </a>
                                     

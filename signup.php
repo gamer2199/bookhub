@@ -17,8 +17,8 @@
             <a class="pure-menu-heading" href="">BookHub</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sign In</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Catalog</a></li>
+                <li class="pure-menu-item"><a href="index.php" class="pure-menu-link">Sign In</a></li>
             </ul>
         </div>
     </div>
@@ -30,7 +30,7 @@
                     <div class="inner">
                         <div class = "container" id=container style="background: url(css/gradient.jpg) repeat;">
 
-                                <form class="col" action = "" method = "POST" enctype="multipart/form-data" autocomplete="off">
+                                <form class="col" action = "insertdb.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
                                     <h1 style="text-align:center; color: white;">Create Account</h1>
 
                                     <h4 style="text-align: center; color: white;">Start your journey down the valley of books</h4>
