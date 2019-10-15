@@ -24,53 +24,109 @@
 
 <div class="pure-g" style = "margin-top: 100px;">
 
-    <div class="pure-u-18-24">
-
+    <!--Details Panel -->
+    <div class="pure-u-16-24">
+    
         <div class = "container">
-            <form action = "" method = "POST" enctype="multipart/form-data" autocomplete="off">
+
             <div class = "pure-g">
                 <div class = "pure-u-1-2">
+                    <h1 class="content-head">Shipping Details</h1>
 
-                    <h1 class="content-head content-head-ribbon">Shipping Details</h1>
-
-                    <input id="email_login" name = "email_login" type="text" placeholder = "Full Name" required>
+                    <label for="fullName"> Full Name </label>
+                    <input id="email_login" name = "email_login" type="text" placeholder = "Walter White" required>
                                 
-                    <input id="email_login" name = "email_login" type="text" placeholder = "Apartment/Flat No." required>
+                    <label for="fullName"> Apartment/Flat No. </label>
+                    <input id="email_login" name = "email_login" type="text" placeholder = "123 Block D" required>
                                     
-                    <input id="password_login" name = "password_login" type="password" placeholder = "Society Name/Street" required>
+                    <label for="fullName"> Street </label>
+                    <input id="password_login" name = "password_login" type="text" placeholder = "90 Feet" required>
 
-                    <input id="email_login" name = "email_login" type="text" placeholder = "City" required>
+                    <label for="fullName"> City </label>
+                    <input id="email_login" name = "email_login" type="text" placeholder = "Mumbai" required>
                                     
-                    <input id="password_login" name = "password_login" type="password" placeholder = "Pincode" required>
-                                    
+                    <label for="fullName"> Pincode </label>
+                    <input id="password_login" name = "password_login" type="text" placeholder = "XXXXXX" required>
                 </div>
 
                 <div class = "pure-u-1-2">
+                    <h1 class="content-head">Payment</h1>
 
-                    <h1 class="content-head content-head-ribbon">Payment</h1>
+                    <div class = "icon-container">
+                        <label for = "icon-container"> Cards Accepted </label>
+                        <img src="css/cards.png" alt="" style="height: 60px; width: 300px;">
 
-                    <input id="email_login" name = "email_login" type="text" placeholder = "Name on Card" required>
+                    </div>
+
+                    <label for="fullName"> Name on Card </label>
+                    <input id="email_login" name = "email_login" type="text" placeholder = "Walter White" required>
                                 
-                    <input id="email_login" name = "email_login" type="text" placeholder = "Card Number" required>
+                    <label for="fullName"> Card Number </label>
+                    <input id="email_login" name = "email_login" type="text" placeholder = "1111-222-3333-4444." required>
                                     
-                    <input id="password_login" name = "password_login" type="password" placeholder = "Expiry Month" required>
-                    
-                    <input id="password_login" name = "password_login" type="password" placeholder = "Expiry Year" required>
+                    <label for="fullName"> Expiry Month </label>
+                    <input id="password_login" name = "password_login" type="text" placeholder = "January" required>
 
-                    <input id="password_login" name = "password_login" type="password" placeholder = "CVV" required>
-
+                    <div class = "pure-g">
+                        <div class = "pure-u-1-2">
+                                <label for="fullName"> Expiry Year </label>
+                                <input id="email_login" name = "email_login" type="text" placeholder = "2020" style="width:60%;" required>
+                        </div>
+                        <div class = "pure-u-1-2">
+                                <label for="fullName"> CVV </label>
+                                <input id="password_login" name = "password_login" type="text" placeholder = "999" style="width:60%;" required>
+                        </div>
+                    </div>
 
                 </div>
-
             </div>
-            <button class="pure-button pure-button-login" type="submit" name="action">Checkout</button>
-            </form>
+
         </div>
         
     </div>
 
-    <div class="pure-u-6-24">
-        <p>Cart</p>
+    <!-- Cart Panel -->
+    <div class="pure-u-8-24">
+        <div class = "cart-container">
+        <h1 class = "content-head"> Cart </h1>
+            <table>
+            <tr>
+                <th>Book Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th></th>
+            </tr>
+            <?php
+                $host = "localhost";
+                $dbUserName = "root"; //Enter "kapil" for college
+                $dbPass = "2199"; // Enter "goodwill2199" for college
+                $dbName = "books";
+
+                $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
+
+                if($conn->connect_error){
+                die("Connection Failed: " . $conn->connect_error);
+                }
+
+                $query = "select title,author,price,cover from book_data";
+                $result = mysqli_query($conn,$query);
+
+                if(mysqli_num_rows($result) > 0){
+                while($row = $result-> fetch_assoc()){
+                    echo "<tr>";
+                    
+                    echo "<td>"; echo $row['title']; echo "</td>";
+                    echo "<td>"; echo $row['price']; echo "</td>";
+                }
+                echo "</table>";
+                }
+                else{
+                    echo "0 Result";
+                    }
+                    $conn->close();
+            ?>
+            </table>
+        </div>
     </div>
 
 
