@@ -94,12 +94,11 @@
                 <th>Book Name</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th></th>
             </tr>
             <?php
                 $host = "localhost";
-                $dbUserName = "root"; //Enter "kapil" for college
-                $dbPass = "2199"; // Enter "goodwill2199" for college
+                $dbUserName = "root"; 
+                $dbPass = "2199"; 
                 $dbName = "books";
 
                 $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
@@ -117,6 +116,7 @@
                     
                     echo "<td>"; echo $row['title']; echo "</td>";
                     echo "<td>"; echo $row['price']; echo "</td>";
+                    echo "<td>"; echo "1"; echo "</td>";
                 }
                 echo "</table>";
                 }
