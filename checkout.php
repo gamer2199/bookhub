@@ -1,185 +1,143 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" type="text/css" href="css/checkout.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection" />
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="css/checkout.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
 
-<nav class="nav-extended blue darken-3">
-    <div class="nav-wrapper">
-      <a href="main.php" class="brand-logo">BookHub</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="profile.html">Profile</a></li>
-      </ul>
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="">BookHub</a>
+
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="main.php" class="pure-menu-link">
+                <i class="fa fa-book fa-lg"></i> Catalog</a></li>
+            <li class="pure-menu-item"><a href="signup.php" class="pure-menu-link">
+                <i class="fa fa-user fa-lg"></i> Profile</a></li>
+        </ul>
     </div>
-</nav>
-
-<!-- Cart Details Pushpin -->
-<div id="blue" class="block blue"> <!-- Add Color next to block for color -->
-
-  <nav class="pushpin-demo-nav" data-target="blue">
-    <div class="nav-wrapper light-blue">
-      <div class="container">
-        <span class="brand-logo">Cart Details</a>
-      </div>
-    </div>
-  </nav>
-  
-  
-
-  <!-- <div class="row">
-    <div class="col s12"> -->
-	<!-- Card Color -->
-      <!-- <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Cart_DETAILS</span>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
 </div>
 
-<!-- Shipping Address Pushpin -->
-<div id="red" class="block red">
-  <nav class="pushpin-demo-nav" data-target="red">
-    <div class="nav-wrapper red">
-      <div class="container">
-        <a href="#" class="brand-logo">Shipping Address</a>
-      </div>
-    </div>
-  </nav>
+<!-- <div class="pure-g" style = "margin-top: 100px;"> -->
 
-<!-- <div class="row">
-    <div class="col s12">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-        	<form action = "order.php" method = "POST" enctype="multipart/form-data" autocomplete="off">
+    <!--Details Panel -->
+    <!-- <div class="pure-u-24-24"> -->
+    
+        <div class = "container" style = "margin-top: 150px;">
 
-	            <div class="row">
-	            	<div class="input-field">
-	                  <input id="name_checkout" name = "name_checkout" type="text" class="validate">
-	                  <label for="name_checkout">Full Name</label>
-	                </div>
-	            </div>
+            <div class = "pure-g">
+                <div class = "pure-u-1-2">
+                    <h1 class="content-head">Shipping Details</h1>
 
-	            <div class="row">
-	                <div class="input-field">
-	                  <input id="street_checkout" name = "street_checkout" type="text" class="validate">
-	                  <label for="street_checkout">Street</label>
-	                </div>
-	            </div>
+                    <label for="fullName"> Full Name </label>
+                    <input id="email_login" name = "email_login" type="text" placeholder = "Walter White" required>
+                                
+                    <label for="fullName"> Apartment/Flat No. </label>
+                    <input id="email_login" name = "email_login" type="text" placeholder = "123 Block D" required>
+                                    
+                    <label for="fullName"> Street </label>
+                    <input id="password_login" name = "password_login" type="text" placeholder = "90 Feet" required>
 
-	            <div class="row">
-	                <div class="input-field">
-	                  <input id="city_checkout" name = "city_checkout" type="text" class="validate">
-	                  <label for="city_checkout">City</label>
-	                </div>
-	            </div>
+                    <label for="fullName"> City </label>
+                    <input id="email_login" name = "email_login" type="text" placeholder = "Mumbai" required>
+                                    
+                    <label for="fullName"> Pincode </label>
+                    <input id="password_login" name = "password_login" type="text" placeholder = "XXXXXX" required>
+                </div>
 
-	            <div class="row">
-	                <div class="input-field">
-	                  <input id="state_checkout" name = "state_checkout" type="text" class="validate">
-	                  <label for="state_checkout">State</label>
-	                </div>
-	            </div>
+                <div class = "pure-u-1-2">
+                    <h1 class="content-head">Payment</h1>
 
-	            <div class="row">
-	                <div class="input-field">
-	                  <input id="zip_checkout" name = "zip_checkout" type="text" class="validate">
-	                  <label for="zip_checkout">Zip</label>
-	                </div>
-	            </div>
-        	</form>
+                    <div class = "icon-container">
+                        <label for = "icon-container"> Cards Accepted </label>
+                        <img src="css/cards.png" alt="" style="height: 60px; width: 300px;">
+                    </div>
+
+                    <label for="fullName"> Name on Card </label>
+                    <input id="email_login" name = "email_login" type="text" placeholder = "Walter White" required>
+                                
+                    <label for="fullName"> Card Number </label>
+                    <input id="email_login" name = "email_login" type="text" placeholder = "1111-222-3333-4444." required>
+                                    
+                    <label for="fullName"> Expiry Month </label>
+                    <input id="password_login" name = "password_login" type="text" placeholder = "January" required>
+
+                    <div class = "pure-g">
+                        <div class = "pure-u-1-2">
+                            <label for="fullName"> Expiry Year </label>
+                            <input id="email_login" name = "email_login" type="text" placeholder = "2020" style="width:60%;" required>
+                        </div>
+                        <div class = "pure-u-1-2">
+                            <label for="fullName"> CVV </label>
+                            <input id="password_login" name = "password_login" type="text" placeholder = "999" style="width:60%;" required>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class = "is-center">
+                <button class = "checkout-button" type="submit" name="action">Checkout</button> 
+            </div>
+            
         </div>
-      </div>
-    </div>
-  </div>
+        
+    <!-- </div> -->
 
-</div> -->
+    <!-- Cart Panel -->
+    <!-- <div class="pure-u-8-24">
+        <div class = "cart-container">
+        <h1 class = "content-head"> <i class="fa fa-shopping-cart fa-lg"></i> Cart </h1>
+            <table>
+            <tr>
+                <th>Book Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            <?php
+                $host = "localhost";
+                $dbUserName = "root"; 
+                $dbPass = "2199"; 
+                $dbName = "books";
 
-<!-- Payment Pushpin -->
-<div id="green" class="block green">
-  <nav class="pushpin-demo-nav" data-target="green">
-    <div class="nav-wrapper green">
-      <div class="container">
-        <a href="#" class="brand-logo">Payment</a>
-      </div>
-    </div>
-  </nav>
+                $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
 
-  <div class="row">
-    <div class="col s12">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
+                if($conn->connect_error){
+                die("Connection Failed: " . $conn->connect_error);
+                }
 
-        	<div class="row">
-	            <div class="input-field">
-	                <input id="cname" name = "cname" type="text" class="validate">
-	                <label for="cname">Name on Card</label>
-	            </div>
-	        </div>
+                $query = "select title,author,price,cover from book_data";
+                $result = mysqli_query($conn,$query);
 
-	        <div class="row">
-	            <div class="input-field">
-	                <input id="cno" name = "cno" type="text" class="validate">
-	                <label for="cno">Card Number</label>
-	            </div>
-	        </div>
-
-	        <div class="row">
-	            <div class="input-field">
-	                <input id="card_expiry_month" name = "card_expiry_month" type="text" class="validate">
-	                <label for="card_expiry_month">Card Expiry Month</label>
-	            </div>
-	        </div>
-
-	        <div class="row">
-	            <div class="input-field">
-	                <input id="card_expiry_year" name = "card_expiry_year" type="text" class="validate">
-	                <label for="card_expiry_year">Card Expiry Year</label>
-	            </div>
-	        </div>
-
-	        <div class="row">
-	            <div class="input-field">
-	                <input id="card_cvv" name = "card_cvv" type="text" class="validate">
-	                <label for="card_cvv">CVV</label>
-	            </div>
-	        </div>
-	        
+                if(mysqli_num_rows($result) > 0){
+                while($row = $result-> fetch_assoc()){
+                    echo "<tr>";
+                    
+                    echo "<td>"; echo $row['title']; echo "</td>";
+                    echo "<td>"; echo $row['price']; echo "</td>";
+                    echo "<td>"; echo "<input id='cart_quant' name = 'cart_quant' type='number' placeholder = 'Quantity' required>"; echo "</td>";
+                }
+                echo "</table>";
+                echo "<hr>";
+                echo "<h1> Total: </h1>";
+                }
+                else{
+                    echo "0 Result";
+                    }
+                    $conn->close();
+            ?>
+            </table>
         </div>
-      </div>
-    </div>
-  </div>
+    </div> -->
 
-</div>
 
-<script type="text/javascript">
-
-document.addEventListener("DOMContentLoaded", function() {
-  var pushpins = document.querySelectorAll(".pushpin-demo-nav");
-  pushpins.forEach(function(element) {
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    var elemRect = element.getBoundingClientRect();
-    var parentRect = element.parentElement.getBoundingClientRect();
-    var elemTop = scrollTop + elemRect.top;
-
-    var instancePushpin = M.Pushpin.init(element, {
-      top: elemTop,
-      bottom: elemTop + parentRect.height - elemRect.height
-    });
-  })
-});
-</script>
+<!-- </div> -->
 
 </body>
 </html>

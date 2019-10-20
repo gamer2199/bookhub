@@ -24,8 +24,10 @@ header("location: test.php"); // Redirecting To Profile Page
             <a class="pure-menu-heading" href="">BookHub</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Catalog</a></li>
-                <li class="pure-menu-item"><a href="signup.php" class="pure-menu-link">Sign Up</a></li>
+                <li class="pure-menu-item"><a href="main.php" class="pure-menu-link">
+                    <i class="fa fa-book fa-lg"></i> Catalog</a></li>
+                <li class="pure-menu-item"><a href="signup.php" class="pure-menu-link">
+                    <i class="fa fa-users fa-lg"></i> Sign Up</a></li>
             </ul>
         </div>
     </div>

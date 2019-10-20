@@ -143,3 +143,84 @@ header("location: index.php"); // Redirecting To Home Page
 
 </body>
 </html>
+
+<table>
+            <tr>
+                <th> Cover </th>
+                <th>Book Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            <?php
+                $host = "localhost";
+                $dbUserName = "root"; 
+                $dbPass = "2199"; 
+                $dbName = "books";
+
+                $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
+
+                if($conn->connect_error){
+                die("Connection Failed: " . $conn->connect_error);
+                }
+
+                $query = "select title,author,price,cover from book_data";
+                $result = mysqli_query($conn,$query);
+
+                if(mysqli_num_rows($result) > 0){
+                while($row = $result-> fetch_assoc()){
+                    echo "<tr>";
+
+                    echo "<td>";?> 
+                    <img src="data:image/jpeg;base64,<?php echo base64_encode( $row['cover'] ); ?>" width="150" height="250" />
+                    <?php echo "</td>"; 
+                    
+                    echo "<td>"; echo $row['title']; echo "</td>";
+                    echo "<td>"; echo $row['price']; echo "</td>";
+                    echo "<td>"; echo "1"; echo "</td>";
+                }
+                echo "</table>";
+                }
+                else{
+                    echo "0 Result";
+                    }
+                    $conn->close();
+            ?>
+            </table>
+
+
+            <?php
+                $host = "localhost";
+                $dbUserName = "root"; 
+                $dbPass = "2199"; 
+                $dbName = "books";
+
+                $rupee = "₹";
+
+                $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
+
+                if($conn->connect_error){
+                die("Connection Failed: " . $conn->connect_error);
+                }
+
+                $query = "select title,author,price,cover from book_data";
+                $result = mysqli_query($conn,$query);
+
+                if(mysqli_num_rows($result) > 0){
+                while($row = $result-> fetch_assoc()){
+                    echo "<tr>";
+                    
+                    echo "<td>";?>
+                    <img class  = "book-img" src="data:image/jpeg;base64,<?php echo base64_encode( $row['cover'] ); ?>" height = "200" width = "150" />
+                    <? echo "</td>";
+
+                    echo "<td>"; echo $row['title']; echo "</td>";
+                    echo "<td>"; echo $rupee . $row['price']; echo "</td>";
+                    echo "<td>"; echo "<input id='cart_quant' name = 'cart_quant' type='number' placeholder = 'Quantity' required>"; echo "</td>";
+                }
+                echo "</table>";
+                }
+                else{
+                    echo "0 Result";
+                }
+                $conn->close();
+            ?>

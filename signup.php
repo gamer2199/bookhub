@@ -17,8 +17,10 @@
             <a class="pure-menu-heading" href="">BookHub</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Catalog</a></li>
-                <li class="pure-menu-item"><a href="index.php" class="pure-menu-link">Sign In</a></li>
+                <li class="pure-menu-item"><a href="main.php" class="pure-menu-link">
+                    <i class="fa fa-book fa-lg"></i> Catalog</a></li>
+                <li class="pure-menu-item"><a href="index.php" class="pure-menu-link">
+                    <i class="fa fa-user fa-lg"></i> Sign In</a></li>
             </ul>
         </div>
     </div>

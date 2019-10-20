@@ -20,79 +20,9 @@ body {
     height: auto;
 }
 
-/*
- * -- LAYOUT STYLES --
- * These are some useful classes which I will need
- */
-.l-box {
-    padding: 1em;
-}
-
-.l-box-lrg {
-    padding: 2em;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
 .is-center {
     text-align: center;
 }
-
-
-
-/*
- * -- PURE FORM STYLES --
- * Style the form inputs and labels
- */
-.pure-form label {
-    margin: 1em 0 0;
-    font-weight: bold;
-    font-size: 100%;
-}
-
-.pure-form input[type] {
-    border: 2px solid #ddd;
-    box-shadow: none;
-    font-size: 100%;
-    width: 100%;
-    margin-bottom: 1em;
-}
-
-/*
- * -- PURE BUTTON STYLES --
- * I want my pure-button elements to look a little different
- */
-.pure-button {
-    background-color: #1f8dd6;
-    color: white;
-    padding: 0.5em 2em;
-    border-radius: 5px;
-}
-
-a.pure-button-primary {
-    background: white;
-    color: #1f8dd6;
-    border-radius: 5px;
-    font-size: 120%;
-}
-
-.pure-button-login{
-    background-color: rgb(16, 209, 26);
-    color: white;
-    padding: 0.5em 2em;
-    border-radius: 5px;
-    margin-top: 40px;
-}
-
-
-.pure-button-forgetpass{
-    background-color: red;
-    color: white;
-    padding: 0.5em 2em;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-
 
 /*
  * -- MENU STYLES --
@@ -132,54 +62,6 @@ a.pure-button-primary {
     background: none;
     border: none;
     color: #AECFE5;
-}
-
-
-/*
- * -- SPLASH STYLES --
- * This is the blue top section that appears on the page.
- */
-
-.splash-container {
-    background: #1f8dd6;
-    z-index: 1;
-    overflow: hidden;
-    /* The following styles are required for the "scroll-over" effect */
-    width: 100%;
-    height: 88%;
-    top: 0;
-    left: 0;
-    position: fixed !important;
-}
-
-.splash {
-    /* absolute center .splash within .splash-container */
-    width: 80%;
-    height: 50%;
-    margin: auto;
-    position: absolute;
-    top: 100px; left: 0; bottom: 0; right: 0;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-/* This is the main heading that appears on the blue section */
-.splash-head {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    border: 3px solid white;
-    padding: 1em 1.6em;
-    font-weight: 100;
-    border-radius: 5px;
-    line-height: 1em;
-}
-
-/* This is the subheading that appears on the blue section */
-.splash-subhead {
-    color: white;
-    letter-spacing: 0.05em;
-    opacity: 0.8;
 }
 
 /*
@@ -258,28 +140,6 @@ a.pure-button-primary {
             float: right;
         }
 
-    /* We increase the height of the splash-container */
-/*    .splash-container {
-        height: 500px;
-    }*/
-
-    /* We decrease the width of the .splash, since we have more width
-    to work with */
-    .splash {
-        width: 50%;
-        height: 50%;
-    }
-
-    .splash-head {
-        font-size: 250%;
-    }
-
-
-    /* We remove the border-separator assigned to .l-box-lrg */
-    .l-box-lrg {
-        border: none;
-    }
-
 }
 
 
@@ -291,17 +151,13 @@ a.pure-button-primary {
 }
 
 .container {
-    background-color: rgba(170, 167, 167, 0.5);
-    width: 95%;
-    height: 100%;
-    margin: 20px;
-  	box-shadow: 0 14px 28px rgba(49, 49, 49, 0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: auto;
-	max-width: 100%;
-    min-height: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 90%;
+    margin: 30px 50px 0px;
     padding: 10px;
+    position: relative;
+    height: auto;
 }
 
   form {
@@ -340,17 +196,13 @@ label{
 }
 
 .cart-container {
-    background-color: rgba(170, 167, 167, 0.5);
-    width: 100%;
-    height: 100%;
-    margin: 20px;
-  	box-shadow: 0 14px 28px rgba(49, 49, 49, 0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: auto;
-	max-width: 80%;
-    min-height: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 80%;
+    margin: 30px 50px 0px;
     padding: 10px;
+    position: relative;
+    height: auto;
 }
 
 table {
@@ -363,3 +215,11 @@ table {
   }
 
 
+.checkout-button {
+    background-color: #1f8dd6;
+    color: white;
+    padding: 0.5em 2em;
+    border-radius: 5px;
+    height: auto;
+    width: 100%;
+}
