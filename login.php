@@ -4,6 +4,7 @@
 
    session_start(); //Starting Session
    $error = ''; //Variable to store error message
+   $username = '';
 
    if(isset($_POST['submit'])){
       if(empty($_POST['email_login']) || empty($_POST['password_login'])){
@@ -14,12 +15,7 @@
          $email = $_POST['email_login'];
          $password = $_POST['password_login'];
 
-         $host = "localhost";
-         $dbUserName = "root";
-         $dbPass = "2199";
-         $dbName = "accounts";
-
-         $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
+         $conn = mysqli_connect("localhost", "root", "2199", "accounts");
 
          $query = "SELECT * from creds where email=? AND password=? LIMIT 1";
 
@@ -31,7 +27,7 @@
          $stmt->store_result();
 
          if($stmt->fetch()){ //Fetching contents of row
-
+            
             $_SESSION['login_user'] = $email; //Init Session
             header("location: main.php"); //Redirecting to main page
          }

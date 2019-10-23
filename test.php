@@ -224,3 +224,48 @@ header("location: index.php"); // Redirecting To Home Page
                 }
                 $conn->close();
             ?>
+
+
+?>
+                $host = "localhost";
+                $dbUserName = "root"; 
+                $dbPass = "2199"; 
+                $dbName = "books";
+
+                $rupee = "₹";
+    
+                $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
+    
+                if($conn->connect_error){
+                die("Connection Failed: " . $conn->connect_error);
+                }
+    
+                $query = "select title,author,price,cover from book_data";
+                $result = mysqli_query($conn,$query);
+    
+                if(mysqli_num_rows($result) > 0){
+                    while($row = $result-> fetch_assoc()){
+                        echo "<div class = 'book-flex'>";
+                        echo "<div class = 'book-flex-in is-center'>";
+                        ?>
+                            <img class  = "book-img" src="data:image/jpeg;base64,<?php echo base64_encode( $row['cover'] ); ?>" />
+                        <?
+
+                        echo "<p class = 'book-name'>"; echo $row['title']; echo "</h3>";
+                        echo "<p class = 'book-author'> By: "; echo $row['author']; echo "</p>";
+                        echo "<p class = 'book-price'> Price: "; echo $rupee . $row['price']; echo "</p>";
+                        
+                        echo "<form method = 'post' action = 'main.php?action=add&id=". $row['id']. "'>";
+                            echo "<button class = 'book-add' type='submit' name='action'>Add to Cart</button>";
+                        echo "</form>";
+                        
+                        echo "</div>";
+                        echo "</div>";
+
+                    }
+                }
+                else{
+                    echo "0 Result";
+                }
+                $conn->close();
+            ?>

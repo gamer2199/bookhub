@@ -1,3 +1,8 @@
+<?php
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,20 +32,25 @@
 
 <div class="pure-g" style = "margin-top: 100px;">
 
-    <!--Details Panel -->
+    <!--Cart Panel -->
     <div class="pure-u-16-24">
     
         <div class = "container">
             <h1 class="content-head">My Cart</h1>
+            <a id="btnEmpty" href="index.php?action=empty">Empty Cart</a>
+            <?php
+            if(isset($_SESSION["cart_item"])){
+                $total_quantity = 0;
+                $total_price = 0;
+            ?>	
             <table>
-            <hr>
-            <p> TEST </p>
-            </table
+            </table>
+
         </div>
         
     </div>
 
-    <!-- Cart Panel -->
+    <!-- Payment details Panel -->
     <div class="pure-u-8-24">
         <div class = "cart-container">
             <h1 class = "content-head"> Price Details </h1>

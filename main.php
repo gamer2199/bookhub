@@ -1,3 +1,58 @@
+<?php
+
+include('session.php');
+if (!isset($_SESSION['login_user'])){
+    header('location: index.php');
+}
+
+require_once('dbcontroller.php');
+$db_handle = new DBController();
+
+if(!empty($_GET["action"])) {
+    switch($_GET["action"]) {
+        case "add":
+            if(!empty($_POST["quantity"])) {
+                $prodID = $db_handle->runQuery("SELECT * from book_data where id='" . $_GET["id"]. "'");
+                $itemArray = array($prodID[0]["id"]=>array('name'=>$prodID[0]["title"], 'id'=>$prodID[0]["id"], 'quantity'=>$_POST["quantity"], 'price'=>$prodID[0]["price"], 'image'=>$prodID[0]["cover"]));
+                
+                if(!empty($_SESSION["cart_item"])) {
+                    if(in_array($prodID[0]["id"],array_keys($_SESSION["cart_item"]))) {
+                        foreach($_SESSION["cart_item"] as $k => $v) {
+                                if($prodID[0]["id"] == $k) {
+                                    if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+                                        $_SESSION["cart_item"][$k]["quantity"] = 0;
+                                    }
+                                    $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+                                }
+                        }
+                    } else {
+                        $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+                    }
+                } else {
+                    $_SESSION["cart_item"] = $itemArray;
+                }
+            }
+        break;
+        case "remove":
+            if(!empty($_SESSION["cart_item"])) {
+                foreach($_SESSION["cart_item"] as $k => $v) {
+                        if($_GET["id"] == $k){
+                            unset($_SESSION["cart_item"][$k]);	}			
+                        if(empty($_SESSION["cart_item"])){
+                            unset($_SESSION["cart_item"]);}
+                }
+            }
+        break;
+        case "empty":
+            unset($_SESSION["cart_item"]);
+        break;	
+    }
+}
+
+$rupee = "₹";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,118 +72,106 @@
         <a class="pure-menu-heading" href="">BookHub</a>
 
         <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="cart.php" class="pure-menu-link">
-                <i class="fa fa-shopping-cart fa-lg"></i> Cart</a></li>
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">
-                <i class="fa fa-user fa-lg"></i> Profile</a></li>
+            <li class="pure-menu-item"><a href="logout.php" class="pure-menu-link">
+                <i class="fa fa-sign-out fa-lg"></i> Log Out</a></li>
         </ul>
     </div>
 </div>
 
 <div class="pure-g" style = "margin-top: 100px;">
 
-    <!--Filter Panel -->
-    <div class="pure-u-6-24">
-        <div class="card">
-            
-            <h1> Filter </h1>
-            <hr>
-            
-            <h3><i class="fa fa-rupee fa-lg"></i> Price </h3>
-            <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-            </div>
-
-            <h3><i class="fa fa-language fa-lg"></i> Languages </h3>
-            <p> English </p>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider-lang"></span>
-            </label>
-            
-            <p> Hindi </p>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider-lang"></span>
-            </label>
-            
-            <p> Marathi </p>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider-lang"></span>
-            </label>
-
-            <h3><i class="fa fa-history fa-lg"></i> Latest Arrivals </h3>
-            <p> Last 30 Days </p>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider-lang"></span>
-            </label>
-            
-            <p> Last 90 Days </p>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider-lang"></span>
-            </label>
-            
-            <p> Last 150 Days </p>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider-lang"></span>
-            </label>
-
-        </div>
-    </div>
-
     <!-- Products Panel -->
-    <div class="pure-u-18-24">
+    <div class="pure-u-16-24">
 
         <div id="flex">
 
             <?php
-                    $host = "localhost";
-                    $dbUserName = "root"; 
-                    $dbPass = "2199"; 
-                    $dbName = "books";
-
-                    $rupee = "₹";
-        
-                    $conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
-        
-                    if($conn->connect_error){
-                    die("Connection Failed: " . $conn->connect_error);
-                    }
-        
-                    $query = "select title,author,price,cover from book_data";
-                    $result = mysqli_query($conn,$query);
-        
-                    if(mysqli_num_rows($result) > 0){
-                        while($row = $result-> fetch_assoc()){
-
-                            echo "<div class = 'book-flex'>";
-                            echo "<div class = 'book-flex-in is-center'>";
-                            ?>
-                                <img class  = "book-img" src="data:image/jpeg;base64,<?php echo base64_encode( $row['cover'] ); ?>" />
-                            <?
-
-                                echo "<p class = 'book-name'>"; echo $row['title']; echo "</h3>";
-                                echo "<p class = 'book-author'> By: "; echo $row['author']; echo "</p>";
-                                echo "<p class = 'book-price'> Price: "; echo $rupee . $row['price']; echo "</p>";
-                                echo "<button class = 'book-add' type='submit' name='action'>Add to Cart</button>";
-                            echo "</div>";
-                            //echo "</div>";
-        
-                            echo "</div>";
-                        }
-                    }
-                    else{
-                        echo "0 Result";
-                    }
-                    $conn->close();
-            ?>
+                
+                $book_array = $db_handle->runQuery("SELECT * from book_data order by id ASC");
+                if (!empty($book_array)){
+                    foreach($book_array as $key=>$value){
+                        ?>
+                        <div class = 'book-flex'>
+                            <div class = 'book-flex-in is-center'>
+                                <form method="post" action="main.php?action=add&id=<?php echo $book_array[$key]["id"]; ?>">
+                                    <img class  = "book-img" src="data:image/jpeg;base64,<?php echo base64_encode( $book_array[$key]["cover"] ); ?>" />
+                                    <p class = 'book-name'><?php echo $book_array[$key]["title"]; ?></p>
+                                    <p class = 'book-author'><?php echo $book_array[$key]["author"]; ?> </p>
+                                    <p class = 'book-price'> Price: <?php echo $rupee . $book_array[$key]["price"]; ?></p>
+                                    <p class = 'book-quant'> Quantity: <input class='book-quantity' type='number' name='quantity' value='1' size='1'/> </p>
+                                    <input class = 'book-add' type='submit' name='action' value = "Add To Cart" />
+                                </form>
+                            </div>
+                        </div>
+                        <?php
+                    }           
+                }
+                ?>
 
         </div>
     </div>
+
+    <!--Cart Panel -->
+    <div class="pure-u-7-24">
+        <div class="card">
+            <h1 class="content-head"> <i class="fa fa-shopping-cart fa-lg"></i> My Cart</h1>
+            <hr>
+            
+            <?php
+                if(isset($_SESSION["cart_item"])){
+                    $total_quantity = 0;
+                    $total_price = 0;
+                ?>	
+                <table>
+                    <tr>
+                        <th style = "width:300px;">Name</th>
+                        <th style = "width:100px;">Quantity</th>
+                        <th style = "width:200px;">Unit Price</th>
+                        <th style = "width:200px;">Price</th>
+                        <th style = "width:200px;">Remove</th>
+                    </tr>	
+                <?php
+                    		
+                        foreach ($_SESSION["cart_item"] as $item){
+                            $item_price = $item["quantity"]*$item["price"];
+                        ?>
+                            <tr>
+                                <td style = "text-align:center;"><?php echo $item["name"]; ?></td>
+                                <td style = "text-align:center;"><?php echo $item["quantity"]; ?></td>
+                                <td style = "text-align:center;"><?php echo $rupee .$item["price"]; ?></td>
+                                <td style = "text-align:center;"><?php echo $rupee . number_format($item_price,2); ?></td>
+                                <td style="text-align:center;"><a href="main.php?action=remove&id=<?php echo $item["id"]; ?>"><img src="css/icon-delete.png" alt="Remove Item" /></a></td>
+                            </tr>
+                            <?php
+                                $total_quantity += $item["quantity"];
+                                $total_price += ($item["price"]*$item["quantity"]);
+                        }
+                            ?>
+
+                </table>
+                <hr>
+                <table>
+                    <tr>
+                        <td><h3 class="content-head">Total: <?php echo $rupee . number_format($total_price, 2); ?> </h3></td>
+                        <td><a style = "margin-left:300px;" id="btnEmpty" href="main.php?action=empty">Empty Cart</a></td>
+                    </tr>
+                </table>
+                <div class = "is-center">
+                    <form action = "checkout.php">
+                        <button class = "checkout-button" type="submit" name="action">Place Order</button>
+                    </form> 
+                </div>
+                <?php
+                } else {
+                ?>
+                    <div class="no-records">Your Cart is Empty</div>
+                <?php 
+                }
+                ?>
+
+        </div>
+    </div>
+
 </div>
 
 </body>

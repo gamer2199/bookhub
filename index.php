@@ -1,7 +1,7 @@
 <?php
 include('login.php'); // Includes Login Script
 if(isset($_SESSION['login_user'])){
-header("location: test.php"); // Redirecting To Profile Page
+header("location: main.php"); // Redirecting To Profile Page
 }
 ?>
     
@@ -37,7 +37,7 @@ header("location: test.php"); // Redirecting To Profile Page
             <div class="outer">
                 <div class="middle">
                     <div class="inner">
-                        <div class = "container" id=login style="background: url(css/gradient.jpg) repeat;">
+                        <div class = "container" id="login" style="background: url(css/gradient.jpg) repeat;">
 
                                 <form class="col" action = "" method = "POST" enctype="multipart/form-data" autocomplete="off">
                                     <h1 style="text-align:center; color: white;">Login</h1>
@@ -48,11 +48,11 @@ header("location: test.php"); // Redirecting To Profile Page
                                 
                                     <input id="password_login" name = "password_login" type="password" placeholder = "Password" required>
                     
-                                    <button class="pure-button pure-button-login" type="submit" name="action">LOGIN</button>
+                                    <button class="pure-button pure-button-login" type="submit" name="submit">LOGIN</button>
                                 
-                                    <a href = "forgotpass.php"> Forgot Password </a>
+                                    <a href = "forgotpass.php" style = "margin-top:30px;"> Forgot Password </a>
 
-                                    <a href = "signup.php"> New User? Head to Signup </a>
+                                    <a href = "signup.php" style = "margin-top:5px;"> New User? Head to Signup </a>
                                     
                                 </form>
                         </div>

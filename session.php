@@ -1,11 +1,6 @@
 <?php
 
-$host = "localhost";
-$dbUserName = "root";
-$dbPass = "2199";
-$dbName = "accounts";
-
-$conn = mysqli_connect($host, $dbUserName, $dbPass, $dbName);
+$conn = mysqli_connect("localhost", "root", "2199", "accounts");
 
 session_start(); //Starting Session
 
