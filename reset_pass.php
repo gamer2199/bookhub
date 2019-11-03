@@ -1,11 +1,8 @@
 <?php
-include('login.php'); // Includes Login Script
-if(isset($_SESSION['login_user'])){
-header("location: main.php"); // Redirecting To Profile Page
-}
+include('passChange.php');
 ?>
-    
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -22,41 +19,32 @@ header("location: main.php"); // Redirecting To Profile Page
 <div class="header">
     <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
         <a class="pure-menu-heading" href="">BookHub</a>
-
-        <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="signup.php" class="pure-menu-link">
-                <i class="fa fa-users fa-lg"></i> Sign Up</a></li>
-        </ul>
     </div>
 </div>
 
 <div class="content">
 
-        <div class="outer">
-            <div class="middle">
-                <div class="inner">
-                    <div class = "container" id="login" style="background: url(css/gradient.jpg) repeat;">
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <div class = "container" id="login" style="background: url(css/gradient.jpg) repeat;">
 
-                            <form class="col" action = "" method = "POST" enctype="multipart/form-data" autocomplete="off">
-                                <h1 style="text-align:center; color: white;">Login</h1>
+                        <form name = "pass_reset" class="col" action = "" method = "POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return validateFields()">
+                            <h1 style="text-align:center; color: white; margin-top:50px;">Reset Password</h1>
 
-                                <h4 style="text-align: center; color: white;">Welcome Back</h4>
+                            <h4 style="text-align: center; color: white;">Enter Password</h4>
 
-                                <input id="email_login" name = "email_login" type="text" placeholder = "Email" required>
+                            <input id="reset_pass" name = "reset_pass" type="password" placeholder = "New Password" required>
+
+                            <input id="reset_pass_confirm" name = "reset_pass_confirm" type="password" placeholder = "Confirm Password" required>
+            
+                            <button class="pure-button pure-button-login" type="submit" name="reset">RESET</button>
                             
-                                <input id="password_login" name = "password_login" type="password" placeholder = "Password" required>
-                
-                                <button class="pure-button pure-button-login" type="submit" name="submit">LOGIN</button>
-                            
-                                <a href = "forgetpass.php" style = "margin-top:30px;"> Forgot Password </a>
-
-                                <a href = "signup.php" style = "margin-top:5px;"> New User? Head to Signup </a>
-                                
-                            </form>
-                    </div>
+                        </form>
                 </div>
             </div>
         </div>
+    </div>
     
 
 </div>
@@ -91,6 +79,24 @@ header("location: main.php"); // Redirecting To Profile Page
     </div>
 </div>
 
+<script>
+function validateFields(){
+
+var password=document.forms["pass_reset"]["reset_pass"].value; 
+var confirmPassword=document.forms["pass_reset"]["reset_pass_confirm"].value 
+
+if(password.length < 8 || confirmPassword.length < 8){
+    alert("Password should contain atleast 8 charachters");
+    return false;
+    }
+else if(password!=confirmPassword){
+    alert("Password do not match");
+}
+else{
+    return true;
+    }
+}
+</script>
 
 </body>
 </html>

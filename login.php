@@ -1,9 +1,7 @@
 <?php
-   
-   //https://www.youtube.com/watch?v=8G7271LAyHY
 
    session_start(); //Starting Session
-   $error = ''; //Variable to store error message
+   $error = ''; 
    $username = '';
 
    if(isset($_POST['submit'])){
@@ -26,16 +24,17 @@
          $stmt->bind_result($email, $password);
          $stmt->store_result();
 
-         if($stmt->fetch()){ //Fetching contents of row
+         if($row = $stmt->fetch()){ //Fetching contents of row
             
             $_SESSION['login_user'] = $email; //Init Session
+            $_SESSION['user_id'] = $row['id'];
             header("location: main.php"); //Redirecting to main page
          }
          else{
             $error = "Username or Password Invalid";
             header("location: error.html"); //Redirecting to main page
          }
-         mysqli_close();
+         mysqli_close($conn);
       }
    }
-   
+?>

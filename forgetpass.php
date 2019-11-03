@@ -1,10 +1,7 @@
 <?php
-include('insertdb.php'); // Includes Login Script
-if(isset($_SESSION['login_user'])){
-header('location: main.php'); // Redirecting To Profile Page
-}
+include('resetMail.php'); 
 ?>
-
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +10,7 @@ header('location: main.php'); // Redirecting To Profile Page
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/forgetpass.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 </head>
@@ -24,6 +21,8 @@ header('location: main.php'); // Redirecting To Profile Page
         <a class="pure-menu-heading" href="">BookHub</a>
 
         <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="signup.php" class="pure-menu-link">
+                <i class="fa fa-users fa-lg"></i> Sign Up</a></li>
             <li class="pure-menu-item"><a href="index.php" class="pure-menu-link">
                 <i class="fa fa-user fa-lg"></i> Sign In</a></li>
         </ul>
@@ -35,31 +34,27 @@ header('location: main.php'); // Redirecting To Profile Page
     <div class="outer">
         <div class="middle">
             <div class="inner">
-                <div class = "container" id=container style="background: url(css/gradient.jpg) repeat;">
+                <div class = "container" id="login" style="background: url(css/gradient.jpg) repeat;">
 
-                    <form name = "signup" class="col" action = "" method = "POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validateFields()">
-                        <h1 style="text-align:center; color: white;">Create Account</h1>
+                        <form name="forgpass" class="col" action = "" method = "POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return validateEmail()">
+                            <h1 style="text-align:center; color: white; margin-top:50px;">Password Reset</h1>
 
-                        <h4 style="text-align: center; color: white;">Start your journey down the valley of books</h4>
+                            <h4 style="text-align: center; color: white;">Enter your email</h4>
 
-                        <input id="first_name" name = "first_name" type="text" placeholder = "First Name" required>
-                        <input id="last_name" name = "last_name" type="text" placeholder = "Last Name" required>
-
-                        <input id="email_signup" name = "email_signup" type="email" placeholder = "Email" onblur="validateEmail(this.value);" required>
-                    
-                        <input id="password_signup" name = "password_signup" type="password" placeholder = "Password" required>
-                        <button class="pure-button pure-button-login" type="submit" name="action">SIGN UP</button>
-
-                        <a href = "index.php"> Already have an account? </a>
+                            <input id="email_forg" name = "email_forg" type="text" placeholder = "Email" required>
+            
+                            <button class="pure-button pure-button-login" type="submit" name="submit">SUBMIT</button>
                         
-                    </form>
+                            <p style = "color:white; margin-top: 50px;"> A link to reset your password will be sent to your registered email.</p>
+                            
+                        </form>
                 </div>
             </div>
         </div>
     </div>
+    
 
 </div>
-
 
 <div class="content-wrapper">
 
@@ -93,28 +88,18 @@ header('location: main.php'); // Redirecting To Profile Page
 
 <script>
 
-function validatePass(){
-var password=document.signup.password_signup.value;  
+function validateEmail() {
+    var sEmail = document.forms["forgpass"]["email_forg"].value;
+    var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
-if(password.length < 8){
-    alert("Password should contain atleast 8 charachters");
-    return false;
-    }
-    else{
-        return true;
-    }
-}
-
-function validateEmail(sEmail) {
-  var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
-
-  if(!sEmail.match(reEmail)) {
+  if(!sEmail.match(reEmail) || sEmail=="") {
     alert("Invalid Email Address");
     return false;
   }
 
+  else{
   return true;
-
+  }
 }
 
 </script>
