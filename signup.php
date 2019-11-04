@@ -45,7 +45,7 @@ header('location: main.php'); // Redirecting To Profile Page
                         <input id="first_name" name = "first_name" type="text" placeholder = "First Name" required>
                         <input id="last_name" name = "last_name" type="text" placeholder = "Last Name" required>
 
-                        <input id="email_signup" name = "email_signup" type="email" placeholder = "Email" onblur="validateEmail(this.value);" required>
+                        <input id="email_signup" name = "email_signup" type="email" placeholder = "Email" required>
                     
                         <input id="password_signup" name = "password_signup" type="password" placeholder = "Password" required>
                         <button class="pure-button pure-button-login" type="submit" name="action">SIGN UP</button>
@@ -93,29 +93,40 @@ header('location: main.php'); // Redirecting To Profile Page
 
 <script>
 
-function validatePass(){
-var password=document.signup.password_signup.value;  
+function validateFields(){
+var password=document.forms["signup"]["password_signup"].value;
+var email=document.forms["signup"]["email_signup"].value;
+
+var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
 
 if(password.length < 8){
     alert("Password should contain atleast 8 charachters");
     return false;
-    }
-    else{
-        return true;
-    }
 }
-
-function validateEmail(sEmail) {
-  var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
-
-  if(!sEmail.match(reEmail)) {
+else if(!email.match(reEmail)){
     alert("Invalid Email Address");
     return false;
-  }
-
-  return true;
-
 }
+else{
+    return true;
+    }
+}
+
+
+$(document).ready(function(){
+    $('#email_signup').blur(function(){
+        var email = $(this).val();
+        $.ajax({
+            url:"validate.php",
+            method:"POST",
+            data:{email_check:email},
+            dataType:"text",
+            success:function(response){
+                alert(response);
+            }
+        });
+    });
+});
 
 </script>
 

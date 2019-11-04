@@ -24,10 +24,9 @@
          $stmt->bind_result($email, $password);
          $stmt->store_result();
 
-         if($row = $stmt->fetch()){ //Fetching contents of row
+         if($stmt->fetch()){ //Fetching contents of row
             
             $_SESSION['login_user'] = $email; //Init Session
-            $_SESSION['user_id'] = $row['id'];
             header("location: main.php"); //Redirecting to main page
          }
          else{
