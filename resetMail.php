@@ -29,7 +29,7 @@ require_once('PHPMailer/PHPMailerAutoload.php');
 				$mail->Host     = 'smtp.gmail.com';
 				$mail->IsHTML(true);
 				$mail->Username = 'bookhubproject@gmail.com';
-				$mail->Password = 'randomtest1234';
+				$mail->Password = '';
 				$mail->SetFrom('no-reply@bookhub.com');
 				$mail->AddAddress($user["email"]);
 				$mail->Subject = "Password Recovery";		
